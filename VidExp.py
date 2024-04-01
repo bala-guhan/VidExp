@@ -13,6 +13,10 @@ from secret_key import openai_api_key
 import textwrap
 import os
 import streamlit as st
+from dotenv import load_dotenv
+
+def configure():
+    load_dotenv()
 
 st.sidebar.info("Only provide youtube videos or Videos with proper Transcript to get Accurate results")
 st.sidebar.warning("This is purely built for integrating with videos in E-learning websites without and not in any other intentions")
@@ -27,7 +31,7 @@ st.video("pexels-google-deepmind-18069166 (2160p).mp4")
 st.write("AI generated Video :point_up_2: || Learn and Grow with AI")
 prompt = st.text_input("Enter the video url")
 query = st.text_input("Enter your question")
-os.environ["OPENAI_API_KEY"] = openai_api_key
+os.environ["OPENAI_API_KEY"] = os.getenv('open_ai_api_key')
 embeddings = OpenAIEmbeddings()
 
 
